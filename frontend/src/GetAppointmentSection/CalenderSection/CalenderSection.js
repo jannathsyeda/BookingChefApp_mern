@@ -10,7 +10,7 @@ const CalenderSection = () => {
                 <Calendar onChange={onChange} value={value} />
                 </div>
             </div>
-        </div>
+           </div>
     );
 };
 
