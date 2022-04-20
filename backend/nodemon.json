@@ -1,0 +1,9 @@
+{
+    "env":{
+        "DB_USER":"arefin6",
+        "DB_PASSWORD":"01715250516arefin",
+        "DB_NAME":"Chef_Booking",
+        "JWT_KEY":"supersecret_dont_share"
+    }
+}
+
