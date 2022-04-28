@@ -62,7 +62,7 @@ const signup = async (req, res, next) => {
   const createdUser = new User({
     name,
     email,
-    image: req.file.path,
+    image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F692921092647054239%2F&psig=AOvVaw2evTD60P9Z8zgl7PkVRwJ6&ust=1651226807339000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCNC2vqzBtvcCFQAAAAAdAAAAABAD",
     password: hashedPassword,
    
   });

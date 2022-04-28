@@ -7,6 +7,9 @@ const mongoose = require('mongoose');
 
 const usersRoutes = require('./routes/users-routes');
 const bookingRoutes=require('./routes/booking-routes');
+const chefRoutes=require('./routes/chef-routes');
+const slotRoutes=require('./routes/slot-routes');
+
 const HttpError = require('./models/http-error');
 
 const app = express();
@@ -28,6 +31,9 @@ app.use((req, res, next) => {
 
 app.use('/api/users', usersRoutes);
 app.use('/api/booking',bookingRoutes);
+app.use('/api/chef',chefRoutes);
+app.use('/api/slot',slotRoutes);
+
 app.use((req, res, next) => {
   const error = new HttpError('Could not find this route.', 404);
   throw error;

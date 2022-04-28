@@ -1,31 +1,26 @@
 const express = require('express');
 const { check } = require('express-validator');
 const checkAuth=require('../middleware/check-auth')
-
-const bookingController=require('../controllers/booking-controllers');
+const slotController=require('../controllers/slot-controllers');
 
 const router = express.Router();
 router.use(checkAuth);
-
 router.post(
-    '/bookingup',[
-      check('customer')
+    '/slotadd',[
+      check('WeekDays')
+        .not()
+        .isEmpty(),
+        check('Date')
+        .not()
+        .isEmpty(),
+        check('Time')
         .not()
         .isEmpty(),
         check('chef')
         .not()
-        .isEmpty(),
-        check('slot')
-        .not()
-        .isEmpty(),
-        check('status')
-        .not()
-        .isEmpty(),
-        check('bookingDate')
-        .not()
         .isEmpty()
     ],
-    bookingController.bookingup
+    slotController.slotadd
   );
 
 module.exports = router;

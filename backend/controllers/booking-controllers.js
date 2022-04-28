@@ -14,6 +14,7 @@ const bookingup = async (req, res, next) => {
       customer: req.body.customer,
       chef: req.body.chef,
       slot:req.body.slot,
+      bookingDate:req.body.bookingDate,
       status: 0
     });
     const createdbooking = await bookingcreate.save() ;

@@ -1,31 +1,23 @@
 const express = require('express');
 const { check } = require('express-validator');
 const checkAuth=require('../middleware/check-auth')
-
-const bookingController=require('../controllers/booking-controllers');
+const chefController=require('../controllers/chef-controllers');
 
 const router = express.Router();
 router.use(checkAuth);
-
 router.post(
-    '/bookingup',[
-      check('customer')
+    '/chefadd',[
+      check('name')
         .not()
         .isEmpty(),
-        check('chef')
+        check('details')
         .not()
         .isEmpty(),
-        check('slot')
-        .not()
-        .isEmpty(),
-        check('status')
-        .not()
-        .isEmpty(),
-        check('bookingDate')
+        check('image')
         .not()
         .isEmpty()
     ],
-    bookingController.bookingup
+    chefController.chefadd
   );
 
 module.exports = router;
