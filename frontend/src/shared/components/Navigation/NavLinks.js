@@ -16,12 +16,13 @@ const NavLinks = props => {
       </li>
       {auth.isLoggedIn && (
         <li>
-          <NavLink to={`/${auth.userId}/places`}>CHEFS</NavLink>
+          <NavLink to="/g">CHEFS</NavLink>
         </li>
+        
       )}
       {auth.isLoggedIn && (
         <li>
-          <NavLink to="/places/new">ABOUT US</NavLink>
+          <NavLink to="/about">ABOUT US</NavLink>
         </li>
       )}
       {!auth.isLoggedIn && (
@@ -29,6 +30,24 @@ const NavLinks = props => {
           <NavLink to="/auth">AUTHENTICATE</NavLink>
         </li>
       )}
+       {auth.isLoggedIn && (
+        <li>
+         <div class="btn-group">
+  <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Action
+  </button>
+  <div class="dropdown-menu bg-dark">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#">Separated link</a>
+  </div>
+</div>
+        </li>
+      )}
+
+      
       {auth.isLoggedIn && (
         <li>
           <button onClick={auth.logout}>LOGOUT</button>
