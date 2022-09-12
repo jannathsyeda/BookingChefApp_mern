@@ -19,6 +19,7 @@ const getUsers = async (req, res, next) => {
   res.json({ users: users.map(user => user.toObject({ getters: true })) });
 };
 
+
 const signup = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -161,6 +162,47 @@ const login = async (req, res, next) => {
   });
 };
 
+const updateUser=async(req, res, next)=>{
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return next(
+      new HttpError('Invalid inputs passed, please check your data.', 422)
+    );
+  }
+
+  const { name, email, password } = req.body;
+  const userId = req.params.uid;
+  
+  let user;
+  try {
+    user = await User.findById(userId);
+  } catch (err) {
+    const error = new HttpError(
+      'Something went wrong, could not update user.',
+      500
+    );
+    return next(error);
+  }
+  user.name = name;
+  user.email = email;
+  user.password=password;
+
+  try {
+    await user.save();
+  } catch (err) {
+    const error = new HttpError(
+      'Something went wrong, could not update user.',
+      500
+    );
+    return next(error);
+  }
+
+  res.status(200).json({ user: user.toObject({ getters: true }) });
+}
+
+
 exports.getUsers = getUsers;
+exports.updateUser = updateUser;
 exports.signup = signup;
 exports.login = login;
+

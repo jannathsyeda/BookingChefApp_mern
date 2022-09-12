@@ -23,6 +23,20 @@ router.post(
   usersController.signup
 );
 
+router.patch(
+  '/:pid',
+  [
+    check('name')
+      .not()
+      .isEmpty(),
+      check('email')
+      .normalizeEmail()
+      .isEmail(),
+      check('password').isLength({ min: 6 })
+  ],
+  usersController.updateUser
+);
+
 router.post('/login', usersController.login);
 
 module.exports = router;
