@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import CalenderSection from './GetAppointmentSection/CalenderSection/CalenderSection';
 import Home from './Home/Home';
+import ProfileCustomer from './ProfileCustomer/ProfileCustomer';
 
 // import Users from './user/pages/Users';
 // import NewPlace from './places/pages/NewPlace';
@@ -34,6 +35,9 @@ const App = () => {
         </Route>
         <Route path="/calendersection" exact>
           <CalenderSection/>
+        </Route>
+        <Route path="/CustomerProfile">
+         <ProfileCustomer/>
         </Route>
         
         
